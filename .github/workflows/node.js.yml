@@ -50,7 +50,7 @@ jobs:
         json-server --watch db.json --port 3300 &
         echo $! > json-server-pid.txt
         npx wait-on https://my-ecommerce-data.onrender.com
-
+    - run:  npm install gh pages
     - name: Deploy with gh-pages
       run: |
         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
