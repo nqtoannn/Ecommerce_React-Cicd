@@ -52,7 +52,7 @@ jobs:
         npx wait-on https://my-ecommerce-data.onrender.com
     - run:  npm install gh pages
 
-    - run: npm start
+    - run: npm run
 
     - name: Deploy with gh-pages
       run: |
