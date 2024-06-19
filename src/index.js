@@ -21,7 +21,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<App  />}>
-            <Route path="/" element={<><Main> </Main><Bag></Bag></>} />
+            <Route path="/Ecommerce_React-Cicd" element={<><Main> </Main><Bag></Bag></>} />
             <Route path="item/:id" element={<><Details/><Bag/></>} />
             <Route path="/shop" element={<><Shop i={true}/><Bag off={true} /></>} />
             <Route path="*/" element={""} />

@@ -22,7 +22,7 @@
   },
   "scripts": {
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start --hostname localhost --port 3000",
+    "start": "react-scripts start --public-url /Ecommerce_React-Cicd/",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
