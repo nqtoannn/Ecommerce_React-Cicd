@@ -114,7 +114,7 @@ export function Checkout() {
           <button className={s.rightBtn}>Place your order</button>
         </div>
         <div className={s.rightBottom}>
-          <button className={s.rightButton} onClick={() => navigate("/shop")}>
+          <button className={s.rightButton} onClick={() => navigate("/Ecommerce_React-Cicd/shop")}>
             <RxChevronLeft /> Back
           </button>
         </div>

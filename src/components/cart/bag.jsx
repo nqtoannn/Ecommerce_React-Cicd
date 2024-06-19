@@ -38,9 +38,9 @@ TotalPrice()
       <h3 className={style.bagName}>Bag</h3>
       <BAgItem car={cart} />
       {off && <h4>Total Bag : ${totals} </h4>}
-      {off ? <button onClick={()=>navigate("/check")} className={style.bagButton}>
+      {off ? <button onClick={()=>navigate("/Ecommerce_React-Cicd/check")} className={style.bagButton}>
         <IoBagHandle /> Checkout
-      </button>:<button onClick={()=>navigate("/shop")} className={style.bagButton}>
+      </button>:<button onClick={()=>navigate("/Ecommerce_React-Cicd/shop")} className={style.bagButton}>
         <IoBagHandle /> View Bag
       </button>}
     </div>

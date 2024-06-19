@@ -11,10 +11,10 @@ export function Header (){
         
         <nav className={style.nav}>
             <ul className={style.navList}>
-                <li onClick={()=>navigate("/")} className={style.navListText}><img src={logo} alt="" /></li>
+                <li onClick={()=>navigate("/Ecommerce_React-Cicd/")} className={style.navListText}><img src={logo} alt="" /></li>
                 <li className={style.navListText}><RxHamburgerMenu className={style.navIcon} /></li>
-                <li onClick={()=>navigate("/")} className={style.navListText}><IoStorefront className={style.navIcon} /></li>
-                <li onClick={()=>navigate("/shop")} className={style.navListText}><IoBagHandle  className={style.navIcon} /></li>
+                <li onClick={()=>navigate("/Ecommerce_React-Cicd/")} className={style.navListText}><IoStorefront className={style.navIcon} /></li>
+                <li onClick={()=>navigate("/Ecommerce_React-Cicd/shop")} className={style.navListText}><IoBagHandle  className={style.navIcon} /></li>
             </ul>
           
                 <p className={style.exit}>< IoExit className={style.exitIcon}/></p>

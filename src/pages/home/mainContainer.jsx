@@ -43,7 +43,7 @@ export function Product() {
       {fullData &&
         fullData.map((product) => (
           <div key={product.id}>
-            <div onClick={() => navigate(`/item/${product.id}`)}>
+            <div onClick={() => navigate(`/Ecommerce_React-Cicd/item/${product.id}`)}>
               <img
                 // onClick={() => dispatch(dataInfo(product))}
                 src={product.img[0]}

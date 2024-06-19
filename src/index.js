@@ -22,11 +22,11 @@ root.render(
         <Routes>
           <Route path="/" exact element={<App  />}>
             <Route path="/Ecommerce_React-Cicd" element={<><Main> </Main><Bag></Bag></>} />
-            <Route path="item/:id" element={<><Details/><Bag/></>} />
-            <Route path="/shop" element={<><Shop i={true}/><Bag off={true} /></>} />
-            <Route path="*/" element={""} />
+            <Route path="Ecommerce_React-Cicd/item/:id" element={<><Details/><Bag/></>} />
+            <Route path="Ecommerce_React-Cicd/shop" element={<><Shop i={true}/><Bag off={true} /></>} />
+            <Route path="*Ecommerce_React-Cicd/" element={""} />
           </Route>
-            <Route path="/check" element={<Checkout/>} />
+            <Route path="Ecommerce_React-Cicd/check" element={<Checkout/>} />
 
         </Routes>
       </BrowserRouter>

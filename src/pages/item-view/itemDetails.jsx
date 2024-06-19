@@ -40,7 +40,7 @@ export function Details() {
   return (
     <section className={style.item}>
       <div className={style.details}>
-        <div onClick={() => navigate('/')} className={style.backs}>
+        <div onClick={() => navigate('/Ecommerce_React-Cicd')} className={style.backs}>
           <IoChevronBackOutline /> Back
         </div>
         <div className={style.product}>
