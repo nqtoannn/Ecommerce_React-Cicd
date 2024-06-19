@@ -3,10 +3,11 @@ import { BsBagPlusFill } from "react-icons/bs";
 
 import {
   addCart,
-  dataInfo,
-  fetchData,
+  // dataInfo,
+  // fetchData,
 } from "../../store/expense/expense-slice";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { itemsApi } from "../../api/data";

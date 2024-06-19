@@ -1,78 +1,79 @@
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Details } from "../../components/details/details";
-import s from "./style/style.module.css";
 import { useNavigate } from "react-router-dom";
 import { itemsApi } from "../../api/data";
-import { useEffect, useState } from "react";
 import { cartData } from "../../store/expense/expense-slice";
-import {FaCcMastercard} from "react-icons/fa"
-import {IoGift} from "react-icons/io5"
-import {BiCheckboxSquare} from "react-icons/bi"
-import {RxChevronLeft} from "react-icons/rx"
+import { Details } from "../../components/details/details";
+import { FaCcMastercard } from "react-icons/fa";
+import { IoGift } from "react-icons/io5";
+import { BiCheckboxSquare } from "react-icons/bi";
+import { RxChevronLeft } from "react-icons/rx";
 import { Price } from "./checkoutContainer";
-import { $CombinedState } from "@reduxjs/toolkit";
+import s from "./style/style.module.css";
 
 export function Checkout() {
   const dispatch = useDispatch();
-  async function basketData() {
-    let data = await itemsApi.bagData();
-    console.log(data);
+  const navigate = useNavigate();
+  const cart = useSelector((product) => Object.values(product.shop.cart));
 
+  const [totals, setTotals] = useState(0);
+  const [topTotal, setTopTotal] = useState(0);
+
+  const basketData = useCallback(async () => {
     try {
+      let data = await itemsApi.bagData();
+      console.log(data);
+
       if (data) {
         dispatch(cartData(data));
       }
-    } catch {
-      console.log("BAgerror");
+    } catch (error) {
+      console.log("BAgerror", error);
     }
-  }
+  }, [dispatch]);
 
-const [totals,setTotals]=useState(0)
-const [topTotal,settopTotal]=useState(0)
- let total=0
- let shipping=6.99
- let gpt=760.41
- let card =0.00
- let top=0
- let cem
+  const TotalPrice = useCallback(() => {
+    let total = 0;
+    let shipping = 6.99;
+    let gpt = 760.41;
+    let card = 0.00;
+    let top = 0;
 
+    cart.forEach((product) => {
+      total += product.price * product.count;
+    });
 
-  function TotalPrice() {
-    cart.map(
-      (product) =>
-        // console.log(product.count);
+    const roundedTotal = parseFloat(total.toFixed(2));
+    setTotals(roundedTotal);
 
-        (total += product.price * product.count),
-        );
-      
-    setTotals(parseFloat(total.toFixed(2)));
+    top = roundedTotal + shipping + gpt + card;
+    const finalTopTotal = parseFloat(top.toFixed(2));
 
-      top+=(totals+shipping+gpt+card)
-
-      console.log(top.toFixed(2));
-      cem =top.toFixed(2)
-
-      settopTotal(cem)
-  }
-
-  useEffect(() => {
-    TotalPrice();
-  });
+    setTopTotal(finalTopTotal);
+  }, [cart]);
 
   useEffect(() => {
     basketData();
-  }, []);
+  }, [basketData]);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    TotalPrice();
+  }, [TotalPrice]);
 
-  let cart = Object.values(useSelector((product) => product.shop.cart));
   console.log(cart);
 
-  const data =[["Items:",`$`+ totals],["Shipping:",`$`+ shipping],["Estimated GST:",`$`+ gpt],["Gift Card:",`$`+card],["Order Total:",`$`+topTotal]]
+  const data = [
+    ["Items:", `$${totals}`],
+    ["Shipping:", `$${6.99}`],
+    ["Estimated GST:", `$${760.41}`],
+    ["Gift Card:", `$${0.00}`],
+    ["Order Total:", `$${topTotal}`]
+  ];
+
   return (
     <section className={s.shop}>
       <div className={s.shopLeft}>
-          {/* //!parcalanma */}
+        {/* //!parcalanma */}
         <div className={s.shopInputCont}>
           <div className={s.melumat}>
             <h2 className={s.adres}>Shipping Address</h2>
@@ -85,13 +86,18 @@ const [topTotal,settopTotal]=useState(0)
             <button className={s.Btn}>Change</button>
           </div>
         </div>
-          {/* //!parcalanma */}
+        {/* //!parcalanma */}
         <div className={s.shopInputCont}>
           <div className={s.melumat}>
             <h2 className={s.adres}>Payment Method</h2>
-            <p className={s.inputText}> <FaCcMastercard/> Mastercard ending in 1252</p>
-            <p className={s.inputText}> <IoGift/> $ 53.21 gift card balance</p>
-            <p className={s.inputText}> <BiCheckboxSquare />
+            <p className={s.inputText}>
+              <FaCcMastercard /> Mastercard ending in 1252
+            </p>
+            <p className={s.inputText}>
+              <IoGift /> $ 53.21 gift card balance
+            </p>
+            <p className={s.inputText}>
+              <BiCheckboxSquare />
               Billing address same as Shipping Address
             </p>
           </div>
@@ -100,18 +106,16 @@ const [topTotal,settopTotal]=useState(0)
           </div>
         </div>
       </div>
-        <Details s={s} car={cart} />
+      <Details s={s} car={cart} />
       <div className={s.shopRight}>
         <div className={s.shopCont}>
           <h3 className={s.rightName}>Order Summary</h3>
-   
-          <Price data={data}/>
-
+          <Price data={data} />
           <button className={s.rightBtn}>Place your order</button>
         </div>
         <div className={s.rightBottom}>
           <button className={s.rightButton} onClick={() => navigate("/shop")}>
-            <RxChevronLeft/> Back
+            <RxChevronLeft /> Back
           </button>
         </div>
       </div>
