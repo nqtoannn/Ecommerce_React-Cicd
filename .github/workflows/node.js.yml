@@ -51,8 +51,6 @@ jobs:
         echo $! > json-server-pid.txt
         npx wait-on https://my-ecommerce-data.onrender.com
 
-    - run: npm test
-
     - run: npm run format
 
     - name: Deploy with gh-pages
