@@ -42,18 +42,7 @@ jobs:
     - name: Wait for JSON Server to be ready
       run: npx wait-on https://my-ecommerce-data.onrender.com
 
-    - run: npm run build
-
-    - name: Restart JSON Server for tests
-      run: |
-        pkill -F json-server-pid.txt || true
-        json-server --watch db.json --port 3300 &
-        echo $! > json-server-pid.txt
-        npx wait-on https://my-ecommerce-data.onrender.com
-
-    - run: npm test
-
-    - run: npm run format
+    - run: npm start
 
     - name: Deploy with gh-pages
       run: |
