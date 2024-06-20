@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:3300/";
+const BASE_URL = "http://localhost:9090/";
 
 export  class itemsApi {
   static async createApi(product) {
