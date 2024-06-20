@@ -62,6 +62,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
 
-    - name: Stop JSON Server
-      if: always()
-      run: pkill -F json-server-pid.txt || true
+    # - name: Stop JSON Server
+    #   if: always()
+    #   run: pkill -F json-server-pid.txt || true
