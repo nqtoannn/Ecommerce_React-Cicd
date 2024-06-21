@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:3300/";
+const BASE_URL = "https://json-server-deployment-1-6dba.onrender.com/";
 
 export  class itemsApi {
   static async createApi(product) {
